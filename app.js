@@ -7,6 +7,10 @@ class Calculator {
   
     }
   
+    delete() {
+      this.currentOperand = this.currentOperand.toString().slice(0, -1);
+  }
+
     clear() {
       this.currentOperand = "";
       this.previousOperand = "";
@@ -58,7 +62,6 @@ class Calculator {
 
     updateDisplay(){
       this.currentOperandTextElement.innerText = this.currentOperand;
-      //this.getDisplayNumber(this.currentOperand);
       if(this.operation != null){
         this.previousOperandTextElement.innerText = `${this.previousOperand} ${this.operation}`;
         this.previousOperandTextElement.innerText = this.previousOperand;
@@ -102,5 +105,10 @@ class Calculator {
 
     allClearButton.addEventListener("click", button => {
         calculator.clear();
+        calculator.updateDisplay();
+      })
+
+    deleteButton.addEventListener("click", button => {
+        calculator.delete();
         calculator.updateDisplay();
       })
